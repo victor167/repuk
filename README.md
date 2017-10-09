@@ -1,3 +1,4 @@
+```
 --------------------------------------------------------------------------------------------------------------------------
 /														index.html						principalController/index
 /quienes-somos/											about.html						principalController/quienessomos
@@ -17,3 +18,4 @@
 /registro/												registro.html					registroController/index
 --------------------------------------------------------------------------------------------------------------------------
 /producto/0/polo-batman-the-dark-knight/				producto.html					productoController/index
+```
