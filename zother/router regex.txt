@@ -1,0 +1,5 @@
+\/panel\/load(.+)\/ok
+
+/panel/load34/ok
+/panel/load/ok
+/panel/load34/ok
