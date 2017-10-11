@@ -12,4 +12,8 @@ class DemoController
     public function index(){
         return 'HOLA MUNDO';
     }
+
+    public function index2($id,$clave){
+        return 'Mi id: ' . $id . ', clave: ' . $clave;
+    }
 }
