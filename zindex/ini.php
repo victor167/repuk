@@ -10,6 +10,7 @@ require_once 'helpers.php';
 require_once 'routing.php';
 
 require_once 'helpers/Route.php';
+require_once 'helpers/View.php';
 
 function callback($bufer)
 {

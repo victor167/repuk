@@ -13,7 +13,13 @@ class DemoController
         return 'HOLA MUNDO';
     }
 
-    public function index2($id,$clave){
+    public function index2($id, $clave){
         return 'Mi id: ' . $id . ', clave: ' . $clave;
+    }
+
+    public function index3(){
+        return view("bolsadecompras/index")
+            ->param('demo','Prueba Demo')
+            ->get();
     }
 }
