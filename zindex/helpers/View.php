@@ -76,7 +76,10 @@ class View
                         }
 
                         #Capturamos todas las variables {{ $x }} y reamplazamos por lo mandado
+                        if(preg_match_all("/@use\('([a-zA-Z0-9_]*)'\)/",$view_template_content,$matches5,PREG_OFFSET_CAPTURE)){
+                            $count_match_use = count($matches5[1]);
 
+                        }
 
                         return $view_template_content;
                     }
