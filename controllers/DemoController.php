@@ -18,8 +18,9 @@ class DemoController
     }
 
     public function index3(){
-        return view("bolsadecompras/index")
-            ->param('demo','Prueba Demo')
+        return view("demo/index")
+            ->param('param1','simple')
+            ->param('param2',['item1','item2'])
             ->get();
     }
 }
