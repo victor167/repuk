@@ -1,10 +1,5 @@
 <?php
 
-Route::get('/demo', 'DemoController@index');
-Route::get('/demo/capitulo-{id}-{clave}', 'DemoController@index2');
+Route::get('/demo', 'DemoController@index3');
 
-Route::get('/', function () {
-    return 'Hello World';
-});
-
-Route::get('/demo3', 'DemoController@index3');
+Route::get('/', 'DemoController@index3');

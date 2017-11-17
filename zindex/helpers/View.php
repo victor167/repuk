@@ -14,6 +14,7 @@ class View
 {
     private $name_view = null;
     private $params = [];
+
     function __construct($_name_view) {
         if(is_string($_name_view)){
             $this->name_view = $_name_view;
@@ -31,6 +32,10 @@ class View
     }
 
     public function get(){
+        foreach ($this->params as $param) {
+            ${$param->name} = $param->value;
+        }
+
         if($this->name_view!=null){
             $view = __DIR__ . '/../../view/' . $this->name_view . '.php';
             if(file_exists($view)){
@@ -76,11 +81,25 @@ class View
                         }
 
                         #Capturamos todas las variables {{ $x }} y reamplazamos por lo mandado
-                        if(preg_match_all("/@use\('([a-zA-Z0-9_]*)'\)/",$view_template_content,$matches5,PREG_OFFSET_CAPTURE)){
-                            $count_match_use = count($matches5[1]);
-                        }
+                        $view_template_content = preg_replace('/{{\s*(.*?)\s*}}/','<?php echo $1; ?>',$view_template_content);
 
-                        return $view_template_content;
+                        #Capturamos todos los foreach
+                        $view_template_content = preg_replace('/@foreach\((.*?)\)/','<?php foreach($1){ ?>',$view_template_content);
+                        $view_template_content = preg_replace('/@endforeach/','<?php } ?>',$view_template_content);
+
+                        #Capturamos todos los for
+                        $view_template_content = preg_replace('/@for\((.*?)\)/','<?php for($1){ ?>',$view_template_content);
+                        $view_template_content = preg_replace('/@endfor/','<?php } ?>',$view_template_content);
+
+                        #Capturamos todos los if,elseif,else
+                        $view_template_content = preg_replace('/@if\((.*?)\)/','<?php if($1){ ?>',$view_template_content);
+                        $view_template_content = preg_replace('/@elseif\((.*?)\)/','<?php }else if($1){ ?>',$view_template_content);
+                        $view_template_content = preg_replace('/@else/','<?php }else{ ?>',$view_template_content);
+                        $view_template_content = preg_replace('/@endif/','<?php } ?>',$view_template_content);
+
+
+
+                        return eval('?>' . $view_template_content . '<?php');
                     }
                 }
                 return $view_content;
