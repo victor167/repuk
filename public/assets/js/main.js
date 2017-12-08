@@ -270,7 +270,11 @@
 		tooltip: function () {
 			// Bootstrap Tooltip
 			if ( $.fn.tooltip ) {
-				$('[data-toggle="tooltip"]').tooltip();
+				$('[data-toggle="tooltip"]').tooltip({
+					animated: 'fade',
+					placement: 'top',
+					html: true
+				});
 			}
 		},
 		popover: function () {
