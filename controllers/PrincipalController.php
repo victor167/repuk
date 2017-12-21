@@ -69,4 +69,14 @@ class PrincipalController
         return view('principal/product')
             ->get();
     }
+
+    public function cart(){
+        return view('principal/cart')
+            ->get();
+    }
+
+    public function error404(){
+        return view('principal/error404')
+            ->get();
+    }
 }
